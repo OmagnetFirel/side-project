@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/styles.css' %}"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="titulo">Hello World</h1>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Upload</button>
+    </form>
+
+    {% if img_obj %}
+    <h2>Imagem editada com sucesso: {{ img_obj.name }}</h2>
+    <img
+      src="{{ img_obj.image.url }}"
+      alt="imagem editada"
+      class="img-responsive"
+    />
+    {% endif %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{% static 'assets/js/scripts.js' %}"></script>
+  </body>
+</html>
